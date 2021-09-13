@@ -8,7 +8,7 @@ import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const HomePage = lazy(() => import('./views/HomePage'));
-const Contacts = lazy(() => import('./Components/Contact/Contact'));
+const ContactsPage = lazy(() => import('./views/ContactsPage'));
 const NotFound = lazy(() => import('./views/NotFound'));
 
 export const App = () => {
@@ -24,7 +24,7 @@ export const App = () => {
                             <HomePage />
                         </Route>
                         <Route exact path="/contacts">
-                            <Contacts />
+                            <ContactsPage />
                         </Route>
                         <Route path="/authorization">
                             <UserMenu />
