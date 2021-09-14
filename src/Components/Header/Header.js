@@ -1,5 +1,6 @@
 import s from './Header.module.css';
 import { NavLink } from 'react-router-dom';
+import UserMenu from '../UserMenu/UserMenu';
 
 const Header = () => (
     <nav className={s.Header}>
@@ -34,14 +35,15 @@ const Header = () => (
         >
             LogIn
         </NavLink>
-        <NavLink
+        <UserMenu />
+        {/* <NavLink
             exact
             to="/logout"
             className={s.navLink}
             activeClassName={s.activeLink}
         >
             LogOut
-        </NavLink>
+        </NavLink> */}
     </nav>
 );
 
