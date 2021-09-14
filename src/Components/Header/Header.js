@@ -32,7 +32,15 @@ const Header = () => (
             className={s.navLink}
             activeClassName={s.activeLink}
         >
-            LogIn/LogOut
+            LogIn
+        </NavLink>
+        <NavLink
+            exact
+            to="/logout"
+            className={s.navLink}
+            activeClassName={s.activeLink}
+        >
+            LogOut
         </NavLink>
     </nav>
 );
