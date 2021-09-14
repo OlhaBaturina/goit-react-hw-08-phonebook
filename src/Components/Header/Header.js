@@ -20,7 +20,15 @@ const Header = () => (
         </NavLink>
         <NavLink
             exact
-            to="/authorization"
+            to="/register"
+            className={s.navLink}
+            activeClassName={s.activeLink}
+        >
+            Register
+        </NavLink>
+        <NavLink
+            exact
+            to="/login"
             className={s.navLink}
             activeClassName={s.activeLink}
         >

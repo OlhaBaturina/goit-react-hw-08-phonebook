@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router';
 import { useSelector } from 'react-redux';
-import { UserMenu } from './Components/UserMenu/UserMenu';
+import { UserMenu } from './Components/Register/Register';
 import Header from './Components/Header/Header';
 import CustomLoader from './Components/Loader/Loader';
 import s from './App.module.css';
@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const HomePage = lazy(() => import('./views/HomePage'));
 const ContactsPage = lazy(() => import('./views/ContactsPage'));
 const NotFound = lazy(() => import('./views/NotFound'));
+const RegisterPage = lazy(() => import('./views/RegisterPage'));
+const LoginPage = lazy(() => import('./views/LoginPage'));
 
 export const App = () => {
     // const showLoader = useSelector(({ loading }) => loading);
@@ -26,8 +28,11 @@ export const App = () => {
                         <Route exact path="/contacts">
                             <ContactsPage />
                         </Route>
-                        <Route path="/authorization">
-                            <UserMenu />
+                        <Route path="/register">
+                            <RegisterPage />
+                        </Route>
+                        <Route path="/login">
+                            <LoginPage />
                         </Route>
 
                         <Route>
@@ -36,14 +41,7 @@ export const App = () => {
                     </Switch>
                 </Suspense>
             </div>
-            {/* <h1 className={s.title}>PhoneBook</h1>
-            <Form />
-            {showLoader && <CustomLoader/>}
-            <h2 className={s.title}>Contacts</h2>
-            <Filter />
-            <Contacts /> */}
             <ToastContainer />
-            {/* {showLoader && <CustomLoader/>} */}
         </>
     );
 };

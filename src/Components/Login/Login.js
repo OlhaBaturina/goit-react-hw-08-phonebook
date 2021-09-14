@@ -1,12 +1,11 @@
-import s from './UserMenu.module.css';
+import s from './Login.module.css';
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubmitData } from '../../redux/contacts-operations';
 import { toast } from 'react-toastify';
 
-export function UserMenu() {
+export function Login() {
     const dispatch = useDispatch();
 
     const [name, setName] = useState('');
