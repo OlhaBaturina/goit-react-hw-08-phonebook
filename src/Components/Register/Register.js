@@ -7,8 +7,6 @@ import { register } from '../../redux/auth/auth-operations';
 
 // import { set } from '@reduxjs/toolkit/node_modules/immer/dist/internal';
 
-console.log(register);
-
 export function Register() {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -32,7 +30,7 @@ export function Register() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log({ name, email, password });
+        // console.log({ name, email, password });
         dispatch(register({ name, email, password }));
         setName('');
         setEmail('');

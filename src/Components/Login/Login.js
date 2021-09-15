@@ -1,84 +1,49 @@
 import s from './Login.module.css';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getSubmitData } from '../../redux/contacts/contacts-operations';
 import { toast } from 'react-toastify';
 
+import { login } from '../../redux/auth/auth-operations';
+
 export function Login() {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    // const [name, setName] = useState('');
-    // const [number, setNumber] = useState('');
-
-    // const handleClick = event => {
-    //     const { value, name } = event.target;
-
-    //     switch (name) {
-    //         case 'name':
-    //             setName(value.trim());
-    //             break;
-    //         case 'number':
-    //             setNumber(value);
-    //             break;
-    //         default:
-    //             return;
-    //     }
-    // };
-
-    // const contact = useSelector(({ contacts }) =>
-    //     contacts.map(({ name }) => name),
-    // );
-
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //     if (contact.includes(name.toLowerCase())) {
-    //         return toast.warning('Such a name already exists!', {
-    //             theme: 'dark',
-    //         });
-    //     }
-
-    //     dispatch(getSubmitData({ name: name, number: number }));
-    //     resetState();
-    // };
-
-    // const resetState = () => {
-    //     setName('');
-    //     setNumber('');
-    // };
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch(login({ email, password }));
+        setEmail('');
+        setPassword('');
+    };
 
     return (
-        <form
-            className={s.thumb}
-            // onSubmit={handleSubmit}
-        >
+        <form className={s.thumb} onSubmit={handleSubmit}>
             <label>
                 <span className={s.name}>Email</span>
                 <input
                     className={s.input}
                     type="email"
                     name="email"
-                    // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-                    required
-                    // value={name}
-                    // onChange={handleClick}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     id={uuidv4()}
+                    required
                 />
             </label>
 
             <label>
                 <span className={s.name}>Password</span>
                 <input
-                    type="password"
                     className={s.input}
+                    type="password"
                     name="password"
-                    // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                    // title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-                    required
-                    // onChange={handleClick}
-                    // value={number}
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                     id={uuidv4()}
+                    required
                 />
             </label>
             <button type="submit" className={s.button}>
