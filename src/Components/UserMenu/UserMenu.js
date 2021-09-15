@@ -1,18 +1,11 @@
 import s from './UserMenu.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from '../../redux/auth/auth-selectors';
+import { logout } from '../../redux/auth/auth-operations';
 
 const UserMenu = () => {
-    // const contacts = useSelector(({ contacts, filter }) => {
-    //     const visibleContacts = contacts.filter(contact =>
-    //         contact.name.toLowerCase().includes(filter.toLowerCase()),
-    //     );
-    //     return visibleContacts;
-    // });
-
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(fetchData());
-    //   }, [dispatch]);
+    const dispatch = useDispatch();
+    const name = useSelector(authSelectors.getUsername);
 
     return (
         <div>

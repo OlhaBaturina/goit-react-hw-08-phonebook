@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import UserMenu from '../UserMenu/UserMenu';
 
+console.log(authSelectors);
+
 const Header = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+    console.log(isLoggedIn);
     return (
         <nav className={s.Header}>
             <NavLink
@@ -25,6 +28,8 @@ const Header = () => {
                 Contacts
             </NavLink>
             {isLoggedIn ? (
+                <UserMenu />
+            ) : (
                 <div>
                     <NavLink
                         exact
@@ -43,8 +48,6 @@ const Header = () => {
                         LogIn
                     </NavLink>
                 </div>
-            ) : (
-                <UserMenu />
             )}
         </nav>
     );

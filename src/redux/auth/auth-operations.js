@@ -1,18 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
-// export const register = createAsyncThunk('/users/signup', async credentials =>{
-//     try {
-// const {data} = await axios.post('/users/signup', credentials);
-// console.log(data);
-// return data;
-//     }
-//  catch (error) {
-// console.log(error)
-// }
-// });
+import { toast } from 'react-toastify';
 
 const tokenState = {
     setToken(token) {
@@ -33,6 +21,10 @@ export const register = createAsyncThunk('auth/register', async userData => {
         return data;
     } catch (error) {
         console.log(error);
+
+        return toast.error('Such a name already exists!', {
+            theme: 'dark',
+        });
     }
 });
 
@@ -44,20 +36,36 @@ export const login = createAsyncThunk('auth/login', async userData => {
         return data;
     } catch (error) {
         console.log(error);
+
+        return toast.error('Such a name already exists!', {
+            theme: 'dark',
+        });
     }
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-    await axios.post('/users/logout');
-    tokenState.cleanToken();
+    try {
+        await axios.post('/users/logout');
+        tokenState.cleanToken();
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 export const checkUser = createAsyncThunk(
     'auth/checkUser',
     async (_, thunkApi) => {
-        const token = thunkApi.getState().auth.token;
-        tokenState.setToken(token);
-        const { data } = await axios.get('/users/current');
-        return data;
+        try {
+            const token = thunkApi.getState().auth.token;
+            tokenState.setToken(token);
+            const { data } = await axios.get('/users/current');
+            return data;
+        } catch (error) {
+            console.log(error);
+
+            return toast.error('Such a name already exists!', {
+                theme: 'dark',
+            });
+        }
     },
 );

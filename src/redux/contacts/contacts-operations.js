@@ -11,7 +11,7 @@ import {
     fetchContactError,
 } from './contact-actions';
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const fetchData = () => dispatch => {
     dispatch(fetchContactRequest());
