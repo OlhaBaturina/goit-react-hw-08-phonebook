@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import { logout } from '../../redux/auth/auth-operations';
 import defaultAvatar from './panda.png';
-// import { logout } from '../../redux/auth/auth-operations';
 
 const UserMenu = () => {
     const dispatch = useDispatch();

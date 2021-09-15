@@ -17,12 +17,12 @@ export const register = createAsyncThunk('auth/register', async userData => {
     try {
         const { data } = await axios.post('/users/signup', userData);
         tokenState.setToken(data.token);
-        console.log(data);
+
         return data;
     } catch (error) {
         console.log(error);
 
-        return toast.error('Such a name already exists!', {
+        return toast.error('Something went wrong! Try again', {
             theme: 'dark',
         });
     }
@@ -32,12 +32,12 @@ export const login = createAsyncThunk('auth/login', async userData => {
     try {
         const { data } = await axios.post('/users/login', userData);
         tokenState.setToken(data.token);
-        console.log('hello,', data.user.name);
+
         return data;
     } catch (error) {
         console.log(error);
 
-        return toast.error('Such a name already exists!', {
+        return toast.error('Something went wrong! Try again', {
             theme: 'dark',
         });
     }
@@ -63,7 +63,7 @@ export const checkUser = createAsyncThunk(
         } catch (error) {
             console.log(error);
 
-            return toast.error('Such a name already exists!', {
+            return toast.error('Something went wrong! Try again', {
                 theme: 'dark',
             });
         }
