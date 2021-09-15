@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Form.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import {getSubmitData} from '../../redux/contacts-operations';
+import { getSubmitData } from '../../redux/contacts/contacts-operations';
 import { toast } from 'react-toastify';
-
 
 export function Form() {
     Form.propTypes = {
@@ -16,7 +15,7 @@ export function Form() {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    
+
     const handleClick = event => {
         const { value, name } = event.target;
 
@@ -38,17 +37,19 @@ export function Form() {
 
     const handleSubmit = event => {
         event.preventDefault();
-            if (contact.includes(name.toLowerCase())) {
-                return toast.warning('Such a name already exists!', { theme: "dark"});
-            }
-               
-        dispatch(getSubmitData({'name': name, 'number': number}));
+        if (contact.includes(name.toLowerCase())) {
+            return toast.warning('Such a name already exists!', {
+                theme: 'dark',
+            });
+        }
+
+        dispatch(getSubmitData({ name: name, number: number }));
         resetState();
     };
 
     const resetState = () => {
         setName('');
-        setNumber('');  
+        setNumber('');
     };
 
     return (
@@ -88,4 +89,3 @@ export function Form() {
         </form>
     );
 }
-

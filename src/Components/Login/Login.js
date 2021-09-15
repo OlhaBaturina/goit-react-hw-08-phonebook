@@ -2,7 +2,7 @@ import s from './Login.module.css';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSubmitData } from '../../redux/contacts-operations';
+import { getSubmitData } from '../../redux/contacts/contacts-operations';
 import { toast } from 'react-toastify';
 
 export function Login() {

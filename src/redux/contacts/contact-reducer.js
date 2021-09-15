@@ -1,52 +1,47 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-    addContactSuccess, 
-    addContactError, 
+    addContactSuccess,
+    addContactError,
     addContactRequest,
     deleteContactRequest,
     deleteContactSuccess,
-    deleteContactError, 
+    deleteContactError,
     changeFilterValue,
     fetchContactRequest,
     fetchContactSuccess,
-    fetchContactError
+    fetchContactError,
 } from './contact-actions';
 
-
 const contactsReducer = createReducer([], {
-    
-    [fetchContactSuccess]: (state, {payload}) => payload,
+    [fetchContactSuccess]: (state, { payload }) => payload,
 
-    [addContactSuccess]: (state, {payload}) => {
-          return [...state, payload];
+    [addContactSuccess]: (state, { payload }) => {
+        return [...state, payload];
     },
-    
-    [deleteContactSuccess]: (state, {payload}) => {
-        return state.filter(({id})=> id !== payload);
+
+    [deleteContactSuccess]: (state, { payload }) => {
+        return state.filter(({ id }) => id !== payload);
     },
 });
-
 
 export const loading = createReducer(false, {
     [fetchContactRequest]: () => true,
     [fetchContactSuccess]: () => false,
     [fetchContactError]: () => false,
-    
+
     [addContactRequest]: () => true,
     [addContactSuccess]: () => false,
     [addContactError]: () => false,
-    
+
     [deleteContactRequest]: () => true,
     [deleteContactSuccess]: () => false,
     [deleteContactError]: () => false,
- });
-
+});
 
 export const filterReducer = createReducer('', {
     [changeFilterValue]: (_, action) => {
         return action.payload;
     },
 });
-
 
 export default { contactsReducer, filterReducer, loading };

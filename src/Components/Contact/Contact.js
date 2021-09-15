@@ -1,11 +1,12 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import s from './Contact.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchData, deleteContact} from '../../redux/contacts-operations';
-
+import {
+    fetchData,
+    deleteContact,
+} from '../../redux/contacts/contacts-operations';
 
 const Contacts = () => {
-    
     const contacts = useSelector(({ contacts, filter }) => {
         const visibleContacts = contacts.filter(contact =>
             contact.name.toLowerCase().includes(filter.toLowerCase()),
@@ -17,7 +18,7 @@ const Contacts = () => {
 
     useEffect(() => {
         dispatch(fetchData());
-      }, [dispatch]);
+    }, [dispatch]);
 
     return (
         <div>
@@ -31,9 +32,7 @@ const Contacts = () => {
                                     className={s.button}
                                     type="button"
                                     onClick={() => {
-                                        dispatch(
-                                            deleteContact(contact.id),
-                                        );
+                                        dispatch(deleteContact(contact.id));
                                     }}
                                 >
                                     Delete
@@ -47,4 +46,3 @@ const Contacts = () => {
 };
 
 export default Contacts;
-
