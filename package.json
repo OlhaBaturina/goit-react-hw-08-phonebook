@@ -1,5 +1,4 @@
-{
-  "homepage": "https://olhabaturina.github.io/goit-react-hw-08-phonebook/",
+{  
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
@@ -40,8 +39,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "api-server": "json-server --watch db.json --port 3004"
+    "deploy": "netlify deploy -p"  
   },
   "eslintConfig": {
     "extends": [

@@ -49,6 +49,10 @@ export const logout = createAsyncThunk('auth/logout', async () => {
         tokenState.cleanToken();
     } catch (error) {
         console.log(error);
+
+        return toast.error('Something went wrong! Try again', {
+            theme: 'dark',
+        });
     }
 });
 
