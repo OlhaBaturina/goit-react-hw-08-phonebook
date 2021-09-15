@@ -22,7 +22,16 @@ const ContactsPage = () => {
                     <Contacts />
                 </div>
             ) : (
-                <p>Your contacts will be here. Please register or login!</p>
+                <div>
+                    <p>Your contacts will be here. Please register or login!</p>
+                    <img
+                        src={
+                            'https://cs11.pikabu.ru/post_img/big/2020/09/07/7/1599476727196824995.jpg'
+                        }
+                        alt={'cat with smartphone'}
+                        width={'540'}
+                    />
+                </div>
             )}
         </>
     );
