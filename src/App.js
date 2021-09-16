@@ -10,7 +10,8 @@ import PublicRoute from './views/PublicRout';
 import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import authSelectors from './redux/auth/auth-selectors';
+import Loader from 'react-loader-spinner';
 const HomePage = lazy(() => import('./views/HomePage'));
 const ContactsPage = lazy(() => import('./views/ContactsPage'));
 const NotFound = lazy(() => import('./views/NotFound'));
@@ -19,6 +20,7 @@ const LoginPage = lazy(() => import('./views/LoginPage'));
 
 export const App = () => {
     const dispatch = useDispatch();
+    const isLoadingUser = useSelector(authSelectors.getIsLoadingUser);
 
     useEffect(() => {
         dispatch(checkUser());
@@ -26,29 +28,33 @@ export const App = () => {
 
     return (
         <>
-            <div className="Container">
-                <Header />
-                <Suspense fallback={<CustomLoader />}>
-                    <Switch>
-                        <PublicRoute exact path="/">
-                            <HomePage />
-                        </PublicRoute>
-                        <PrivateRoute path="/contacts">
-                            <ContactsPage />
-                        </PrivateRoute>
-                        <PublicRoute path="/register" restricted>
-                            <RegisterPage />
-                        </PublicRoute>
-                        <PublicRoute path="/login" restricted>
-                            <LoginPage />
-                        </PublicRoute>
+            {isLoadingUser ? (
+                <div className="Container">
+                    <Header />
+                    <Suspense fallback={<CustomLoader />}>
+                        <Switch>
+                            <PublicRoute exact path="/">
+                                <HomePage />
+                            </PublicRoute>
+                            <PrivateRoute path="/contacts">
+                                <ContactsPage />
+                            </PrivateRoute>
+                            <PublicRoute path="/register" restricted>
+                                <RegisterPage />
+                            </PublicRoute>
+                            <PublicRoute path="/login" restricted>
+                                <LoginPage />
+                            </PublicRoute>
 
-                        <Route>
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                </Suspense>
-            </div>
+                            <Route>
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </Suspense>
+                </div>
+            ) : (
+                <Loader />
+            )}
             <ToastContainer />
         </>
     );
