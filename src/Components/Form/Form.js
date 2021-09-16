@@ -31,19 +31,26 @@ export function Form() {
         }
     };
 
-    const contact = useSelector(({ contacts }) =>
+    const nameList = useSelector(({ contacts }) =>
         contacts.map(({ name }) => name),
     );
 
     const handleSubmit = event => {
         event.preventDefault();
-        if (contact.includes(name.toLowerCase())) {
-            return toast.warning('Such a name already exists!', {
-                theme: 'dark',
-            });
+
+        if (
+            nameList.some(
+                contact => contact.toLowerCase() === name.toLowerCase(),
+            )
+        ) {
+            toast.error(name + ' is already exist');
+            return;
         }
 
         dispatch(getSubmitData({ name: name, number: number }));
+
+        toast.success('Сontact was added successfully');
+
         resetState();
     };
 
