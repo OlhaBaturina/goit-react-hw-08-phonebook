@@ -33,11 +33,11 @@ const Header = () => {
                     <UserMenu />
                 </>
             ) : (
-                <div>
+                <div className={s.authLinkThumb}>
                     <NavLink
                         exact
                         to="/register"
-                        className={s.navLink}
+                        className={s.authLink}
                         activeClassName={s.activeLink}
                     >
                         Register
@@ -45,7 +45,7 @@ const Header = () => {
                     <NavLink
                         exact
                         to="/login"
-                        className={s.navLink}
+                        className={s.authLink}
                         activeClassName={s.activeLink}
                     >
                         LogIn

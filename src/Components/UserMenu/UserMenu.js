@@ -10,9 +10,12 @@ const UserMenu = () => {
     const avatar = defaultAvatar;
 
     return (
-        <div>
-            <img className={s.avatar} src={avatar} alt="" width={32} />
-            <p>Hello, {name}</p>
+        <div className={s.thumb}>
+            <div className={s.imgThumb}>
+                <img className={s.avatar} src={avatar} alt="" width={50} />
+            </div>
+
+            <p className={s.text}>Hello, {name}</p>
 
             <button
                 className={s.button}

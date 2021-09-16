@@ -11,7 +11,6 @@ import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import authSelectors from './redux/auth/auth-selectors';
-import Loader from 'react-loader-spinner';
 const HomePage = lazy(() => import('./views/HomePage'));
 const ContactsPage = lazy(() => import('./views/ContactsPage'));
 const NotFound = lazy(() => import('./views/NotFound'));
@@ -27,9 +26,9 @@ export const App = () => {
     }, [dispatch]);
 
     return (
-        <>
-            {isLoadingUser ? (
-                <div className="Container">
+        <div className="s.Container">
+            {!isLoadingUser ? (
+                <>
                     <Header />
                     <Suspense fallback={<CustomLoader />}>
                         <Switch>
@@ -51,11 +50,11 @@ export const App = () => {
                             </Route>
                         </Switch>
                     </Suspense>
-                </div>
+                </>
             ) : (
-                <Loader />
+                <CustomLoader />
             )}
             <ToastContainer />
-        </>
+        </div>
     );
 };
