@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { checkUser } from './redux/auth/auth-operations';
 import Header from './Components/Header/Header';
 import CustomLoader from './Components/Loader/Loader';
+import PrivateRoute from './views/PrivateRoute';
 import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,9 +32,9 @@ export const App = () => {
                         <Route exact path="/">
                             <HomePage />
                         </Route>
-                        <Route exact path="/contacts">
+                        <PrivateRoute path="/contacts">
                             <ContactsPage />
-                        </Route>
+                        </PrivateRoute>
                         <Route path="/register">
                             <RegisterPage />
                         </Route>
