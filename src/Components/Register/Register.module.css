@@ -6,6 +6,7 @@
     border: 1px solid rgba(1, 62, 65, 0.288);
     padding: 20px;
     text-align: center;
+    margin: 0 auto;
 }
 .thumb:hover {
     box-shadow: 10px 5px 5px rgba(0, 139, 139, 0.11);

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { checkUser } from './redux/auth/auth-operations';
 import Header from './Components/Header/Header';
+import Container from './Components/Container/Container';
 import CustomLoader from './Components/Loader/Loader';
 import PrivateRoute from './views/PrivateRoute';
 import PublicRoute from './views/PublicRout';
@@ -30,26 +31,28 @@ export const App = () => {
             {!isLoadingUser ? (
                 <>
                     <Header />
-                    <Suspense fallback={<CustomLoader />}>
-                        <Switch>
-                            <PublicRoute exact path="/">
-                                <HomePage />
-                            </PublicRoute>
-                            <PrivateRoute path="/contacts">
-                                <ContactsPage />
-                            </PrivateRoute>
-                            <PublicRoute path="/register" restricted>
-                                <RegisterPage />
-                            </PublicRoute>
-                            <PublicRoute path="/login" restricted>
-                                <LoginPage />
-                            </PublicRoute>
+                    <Container>
+                        <Suspense fallback={<CustomLoader />}>
+                            <Switch>
+                                <PublicRoute exact path="/">
+                                    <HomePage />
+                                </PublicRoute>
+                                <PrivateRoute path="/contacts">
+                                    <ContactsPage />
+                                </PrivateRoute>
+                                <PublicRoute path="/register" restricted>
+                                    <RegisterPage />
+                                </PublicRoute>
+                                <PublicRoute path="/login" restricted>
+                                    <LoginPage />
+                                </PublicRoute>
 
-                            <Route>
-                                <NotFound />
-                            </Route>
-                        </Switch>
-                    </Suspense>
+                                <Route>
+                                    <NotFound />
+                                </Route>
+                            </Switch>
+                        </Suspense>
+                    </Container>
                 </>
             ) : (
                 <CustomLoader />
