@@ -6,6 +6,7 @@ import { checkUser } from './redux/auth/auth-operations';
 import Header from './Components/Header/Header';
 import CustomLoader from './Components/Loader/Loader';
 import PrivateRoute from './views/PrivateRoute';
+import PublicRoute from './views/PublicRout';
 import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,18 +30,18 @@ export const App = () => {
             <div className="Container">
                 <Suspense fallback={<CustomLoader />}>
                     <Switch>
-                        <Route exact path="/">
+                        <PublicRoute exact path="/">
                             <HomePage />
-                        </Route>
+                        </PublicRoute>
                         <PrivateRoute path="/contacts">
                             <ContactsPage />
                         </PrivateRoute>
-                        <Route path="/register">
+                        <PublicRoute path="/register" restricted>
                             <RegisterPage />
-                        </Route>
-                        <Route path="/login">
+                        </PublicRoute>
+                        <PublicRoute path="/login" restricted>
                             <LoginPage />
-                        </Route>
+                        </PublicRoute>
 
                         <Route>
                             <NotFound />
