@@ -5,12 +5,9 @@ import authSelectors from '../../redux/auth/auth-selectors';
 import UserMenu from '../UserMenu/UserMenu';
 import Container from '../Container/Container';
 
-console.log(authSelectors);
-
 const Header = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-    console.log(isLoggedIn);
     return (
         <nav className={s.nav}>
             <Container>

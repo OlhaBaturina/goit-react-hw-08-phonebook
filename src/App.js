@@ -8,7 +8,6 @@ import Container from './Components/Container/Container';
 import CustomLoader from './Components/Loader/Loader';
 import PrivateRoute from './views/PrivateRoute';
 import PublicRoute from './views/PublicRout';
-import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import authSelectors from './redux/auth/auth-selectors';
@@ -46,7 +45,6 @@ export const App = () => {
                                 <PublicRoute path="/login" restricted>
                                     <LoginPage />
                                 </PublicRoute>
-
                                 <Route>
                                     <NotFound />
                                 </Route>

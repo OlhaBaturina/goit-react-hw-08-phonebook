@@ -5,11 +5,8 @@ import {
     fetchData,
     deleteContact,
 } from '../../redux/contacts/contacts-operations';
-import authSelectors from '../../redux/auth/auth-selectors';
 
 const Contacts = () => {
-    const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
     const contacts = useSelector(({ contacts, filter }) => {
         const visibleContacts = contacts.filter(contact =>
             contact.name.toLowerCase().includes(filter.toLowerCase()),

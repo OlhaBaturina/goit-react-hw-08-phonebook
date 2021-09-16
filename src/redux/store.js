@@ -14,8 +14,6 @@ import {
 } from 'redux-persist';
 import authSlice from './auth/auth-slice';
 
-console.log(authSlice);
-
 const persistConfig = {
     key: 'auth',
     storage,

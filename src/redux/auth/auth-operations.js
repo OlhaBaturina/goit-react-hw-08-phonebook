@@ -20,8 +20,6 @@ export const register = createAsyncThunk('auth/register', async userData => {
 
         return data;
     } catch (error) {
-        console.log(error);
-
         return toast.error('Something went wrong! Try again', {
             theme: 'dark',
         });
@@ -35,8 +33,6 @@ export const login = createAsyncThunk('auth/login', async userData => {
 
         return data;
     } catch (error) {
-        console.log(error);
-
         return toast.error('Something went wrong! Try again', {
             theme: 'dark',
         });
@@ -48,8 +44,6 @@ export const logout = createAsyncThunk('auth/logout', async () => {
         await axios.post('/users/logout');
         tokenState.cleanToken();
     } catch (error) {
-        console.log(error);
-
         return toast.error('Something went wrong! Try again', {
             theme: 'dark',
         });
@@ -71,8 +65,6 @@ export const checkUser = createAsyncThunk(
 
             return data;
         } catch (error) {
-            console.log(error);
-
             return toast.error('Something went wrong! Try again', {
                 theme: 'dark',
             });
