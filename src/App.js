@@ -1,13 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router';
-import { useSelector } from 'react-redux';
-// import { UserMenu } from './Components/Register/Register';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkUser } from './redux/auth/auth-operations';
 import Header from './Components/Header/Header';
 import CustomLoader from './Components/Loader/Loader';
 import s from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import UserMenu from './Components/UserMenu/UserMenu';
+
 const HomePage = lazy(() => import('./views/HomePage'));
 const ContactsPage = lazy(() => import('./views/ContactsPage'));
 const NotFound = lazy(() => import('./views/NotFound'));
@@ -15,7 +16,11 @@ const RegisterPage = lazy(() => import('./views/RegisterPage'));
 const LoginPage = lazy(() => import('./views/LoginPage'));
 
 export const App = () => {
-    // const showLoader = useSelector(({ loading }) => loading);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(checkUser());
+    }, [dispatch]);
 
     return (
         <>
@@ -35,9 +40,7 @@ export const App = () => {
                         <Route path="/login">
                             <LoginPage />
                         </Route>
-                        {/* <Route path="/logout">
-                            <UserMenu />
-                        </Route> */}
+
                         <Route>
                             <NotFound />
                         </Route>

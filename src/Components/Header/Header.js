@@ -9,6 +9,7 @@ console.log(authSelectors);
 const Header = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+    console.log(isLoggedIn);
     return (
         <nav className={s.Header}>
             <NavLink
