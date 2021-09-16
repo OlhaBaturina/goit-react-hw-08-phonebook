@@ -26,8 +26,8 @@ export const App = () => {
 
     return (
         <>
-            <Header />
             <div className="Container">
+                <Header />
                 <Suspense fallback={<CustomLoader />}>
                     <Switch>
                         <PublicRoute exact path="/">

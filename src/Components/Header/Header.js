@@ -20,15 +20,18 @@ const Header = () => {
             >
                 Home Page
             </NavLink>
-            <NavLink
-                to="/contacts"
-                className={s.navLink}
-                activeClassName={s.activeLink}
-            >
-                Contacts
-            </NavLink>
+
             {isLoggedIn ? (
-                <UserMenu />
+                <>
+                    <NavLink
+                        to="/contacts"
+                        className={s.navLink}
+                        activeClassName={s.activeLink}
+                    >
+                        Contacts
+                    </NavLink>
+                    <UserMenu />
+                </>
             ) : (
                 <div>
                     <NavLink
